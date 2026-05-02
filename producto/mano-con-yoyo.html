@@ -133,7 +133,7 @@ footer a{color:inherit;text-decoration:none}
       
       
     </div>
-    
+    <div class="m-thumbs" id="m-thumbs"></div>
   </div>
 
   <div class="p-info">
@@ -193,6 +193,23 @@ function renderMain(dir){
     html += `<div class="img-counter">${curIdx+1} / ${IMGS.length}</div>`;
   }
   m.innerHTML = html;
+  // Render thumbs
+  const tb = document.getElementById('m-thumbs');
+  if(tb && tb.children.length === 0){
+    IMGS.forEach((src,i)=>{
+      const w = document.createElement('div');
+      w.className = 'm-thumb-wrap';
+      const d = document.createElement('div');
+      d.className = 'm-thumb' + (i===0?' on':'');
+      d.onclick = ()=>setImg(i);
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      d.appendChild(img);
+      w.appendChild(d);
+      tb.appendChild(w);
+    });
+  }
   document.querySelectorAll('.m-thumb').forEach((t,i)=>t.classList.toggle('on', i===curIdx));
 }
 
