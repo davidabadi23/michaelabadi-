@@ -311,7 +311,10 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.05);padding:
   .m-main{height:75vw;min-height:320px;background:var(--cream2)}
   /* Mostrar imágenes completas sin recortar en responsive */
   .m-main img,.m-main video,.m-media img,.m-media video{object-fit:contain!important}
-  .card-inner img,.card-inner video{object-fit:contain!important;background:var(--cream2)}
+  /* MASONRY: tarjetas se adaptan al alto natural de la imagen, sin barras beige */
+  .card-img{aspect-ratio:auto;height:auto;display:block;background:transparent}
+  .card-inner{height:auto;display:block}
+  .card-inner img,.card-inner video{width:100%;height:auto;object-fit:initial!important;background:transparent!important}
   .nav-links a:not(.nav-wa):not(:last-child){display:none}
   .nav-search{position:fixed;top:64px;left:0;right:0;z-index:198;background:var(--cream);border-bottom:1px solid var(--cream2);padding:.55rem 1.25rem;width:100%}
   .nav-search-input{width:100%!important;box-sizing:border-box;font-size:16px!important;letter-spacing:0}
@@ -321,7 +324,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.05);padding:
   footer{padding:1.5rem}
 }
 @media(max-width:480px){
-  .card-img{aspect-ratio:3/4}
+  .card-img{aspect-ratio:auto}
   .hero-left{padding:2.5rem 1.25rem 2rem}
   .hero-title{font-size:clamp(2.4rem,9vw,3.2rem)}
   .hero-sub{display:none}
